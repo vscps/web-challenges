@@ -95,15 +95,43 @@ h1 {
   width: 100%;
 }
 
+.cat-small {
+  display: block;
+}
+
+.cat-medium {
+  display: none;
+}
+
+.cat-large {
+  display: none;
+}
+
 @media screen and (min-width: 600px) {
   .box--two {
     width: 200px;
+  }
+
+  .cat-small {
+    display: none;
+  }
+
+  .cat-medium {
+    display: block;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .box--two {
     width: 400px;
+  }
+
+  .cat-medium {
+    display: none;
+  }
+
+  .cat-large {
+    display: block;
   }
 }
 
