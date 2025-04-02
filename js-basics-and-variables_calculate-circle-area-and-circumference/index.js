@@ -1,5 +1,11 @@
 console.clear();
 
+const radius = 5;
+circleArea = Math.PI * radius ** 2;
+circumference = 2 * Math.PI * radius;
+console.log(circleArea);
+console.log(circumference);
+
 /*
 How can you calculate the area and circumference of a pizza - oops, I mean a circle? Let`s find out!
 

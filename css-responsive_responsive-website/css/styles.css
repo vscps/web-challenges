@@ -257,19 +257,25 @@ CSS based on conditions such as viewport width, etc. */
 }
 
 @media screen and (min-width: 1200px) {
+  .main-content {
+    padding: 0;
+  }
+
   .card-section {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding: 0 50px;
   }
 
   .product-card {
-    max-width: 50%;
+    max-width: 35%;
   }
 
   .--forest {
     max-width: 100%;
+    padding: 0;
   }
 
   .intro-text {
