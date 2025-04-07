@@ -1,8 +1,4 @@
 const box = document.querySelector("[data-js=box]");
-const redButton = document.querySelector("[data-js=js-red-button]");
-const greenButton = document.querySelector("[data-js=js-green-button]");
-const blueButton = document.querySelector("[data-js=js-blue-button]");
-const grayButton = document.querySelector("[data-js=js-gray-button]");
 
 /*
 We want to add functionality to the buttons on this page. When a button is clicked, the corresponding color should be applied to the box.
@@ -11,36 +7,20 @@ We want to add functionality to the buttons on this page. When a button is click
   3. Use the two functions in the event listeners for the buttons to apply the corresponding color to the box when a button is clicked.
 */
 
-redButton.addEventListener("click", () => {
-  /*
-  Use your functions to:
-    - remove all classes
-    - then add the class name: "red"
-  */
-});
+function removeAllColors(element) {
+  /*Overwrite the existing classes with "box" only */
+  element.className = "box";
+}
 
-blueButton.addEventListener("click", () => {
-  /*
-  Use your functions to:
-    - remove all classes
-    - then add the class name: "blue"
-  */
-});
+function addColor(element, color) {
+  element.classList.add(color);
+}
 
-greenButton.addEventListener("click", () => {
-  /*
-  Use your functions to:
-    - remove all classes
-    - then add the class name: "green"
-  */
-});
-
-grayButton.addEventListener("click", () => {
-  /*
-  Use your functions to:
-    - remove all classes
-    - then add the class name: "gray"
-  */
-});
+function changeColor(event) {
+  removeAllColors(box);
+  /* Reference the onClick event on the button element itself from the HTML file. Derive the color from the data-js string. */
+  const color = event.target.getAttribute("data-js").split("-")[1];
+  addColor(box, color);
+}
 
 // Write your two functions below:
