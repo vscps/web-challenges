@@ -9,7 +9,7 @@ const outputSection = document.querySelector('[data-js="output-section"]');
 const output = document.querySelector('[data-js="output"]');
 
 let diameter1 = 1;
-let diameter2 = 2;
+let diameter2 = 1;
 
 function calculatePizzaGain(diameter1, diameter2) {
   const radius1 = diameter1 * 0.5;
@@ -18,6 +18,7 @@ function calculatePizzaGain(diameter1, diameter2) {
   const pizzaArea2 = Math.PI * Math.pow(radius2, 2);
   const pizzaGain = Math.round(((pizzaArea2 - pizzaArea1) / pizzaArea1) * 100);
   outputSection.innerHTML = `<h2>Gain in Pizza: ${pizzaGain} %</h2>`;
+  return pizzaGain;
 }
 
 function updatePizzaDisplay(pizzaElement, newSize) {
@@ -26,23 +27,27 @@ function updatePizzaDisplay(pizzaElement, newSize) {
 }
 
 function updateOutputColor(size1, size2) {
-  let bgColor = outputSection.style.background - color;
+  let bgColor = outputSection.style;
+  console.log(bgColor);
   if (pizzaGain > 0) {
     bgColor = "var(--green)";
   } else if (pizzaGain > 0) {
     bgColor = "var(--red)";
   }
+  console.log(bgColor);
 }
 
 pizzaInput1.addEventListener("input", function () {
   diameter1 = pizzaInput1.value;
+  diameter2 = pizzaInput2.value;
   const result = calculatePizzaGain(diameter1, diameter2);
   updatePizzaDisplay(pizza1, diameter1);
-  updateOutputColor();
+  updateOutputColor(diameter1, diameter2);
   return result;
 });
 
 pizzaInput2.addEventListener("input", () => {
+  diameter1 = pizzaInput1.value;
   diameter2 = pizzaInput2.value;
   const result = calculatePizzaGain(diameter1, diameter2);
   updatePizzaDisplay(pizza2, diameter2);
