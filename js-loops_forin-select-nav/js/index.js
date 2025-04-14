@@ -17,6 +17,11 @@ const languages = {
 };
 
 const select = document.createElement("select");
+for (const language in languages) {
+  const option = document.createElement("option");
+  option.textContent = languages[language];
+  select.append(option);
+}
 select.name = "languages";
 main.append(select);
 
@@ -34,6 +39,22 @@ const nav = {
 
 const navElement = document.createElement("nav");
 const ul = document.createElement("ul");
+
+for (const entry in nav) {
+  const linkList = nav[entry];
+  const navLinks = [];
+
+  for (const item in linkList) {
+    navLinks.push(linkList[item]);
+  }
+  const li = document.createElement("li");
+  const a = document.createElement("a");
+  a.href = navLinks[0];
+  a.textContent = navLinks[1];
+  li.append(a);
+  ul.append(li);
+}
+
 main.append(navElement);
 navElement.append(ul);
 
