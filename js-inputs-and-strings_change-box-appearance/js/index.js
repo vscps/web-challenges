@@ -9,9 +9,18 @@ console.log("color");
 
 color.addEventListener("change", (event) => {
   const hue = event.target.value;
-  box.style["background-color"] = "rgb(128, 0 , 0";
-  // "hsl(" + hue + "deg 100% 100%);";
-  const test = box.style["background-color"];
-  console.log(event.target.value);
-  console.log(test);
+  console.log(hue);
+  box.style.backgroundColor = `hsl(${hue} 70% 60%)`;
+});
+
+radius.addEventListener("change", (event) => {
+  const radius = event.target.value;
+  console.log(radius);
+  box.style.borderRadius = `${radius}%`;
+});
+
+rotation.addEventListener("change", (event) => {
+  const rotation = event.target.value;
+  console.log(rotation);
+  box.style.transform = `rotate(${rotation}deg)`;
 });
