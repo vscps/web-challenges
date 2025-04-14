@@ -99,7 +99,20 @@ console.log(indexOfAnimalWithNameLongerFive);
 // Hint: sort() mutates the original array, which is bad.
 // Make sure to use toSorted() instead.
 
-const animalsSortedAlphabetically = null;
+function sortByObjectName(a, b) {
+  if (a.name < b.name) {
+    return -1;
+  }
+  if (a.name > b.name) {
+    return 1;
+  }
+
+  // names must be equal
+  return 0;
+}
+
+const animalsSortedAlphabetically = animals.toSorted(sortByObjectName);
+console.log(animalsSortedAlphabetically);
 
 const animalsSortedByWeightStartingWithLowest = null;
 
