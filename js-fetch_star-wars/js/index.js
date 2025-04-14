@@ -3,7 +3,7 @@ import { renderElement } from "./utils.js";
 
 console.clear();
 
-const EXAMPLE_DATA = {
+/* const EXAMPLE_DATA = {
   name: "Luke Skywalker",
   height: "172",
   mass: "77",
@@ -31,16 +31,24 @@ const EXAMPLE_DATA = {
   created: "2014-12-09T13:50:51.644000Z",
   edited: "2014-12-20T21:17:56.891000Z",
   url: "https://swapi.py4e.com/api/people/1/",
-};
-
-// Create dom element for a card and append it to the root
-const firstCard = Card(EXAMPLE_DATA);
-renderElement(firstCard);
-
-fetchDataAndRender();
+}; */
 
 // --v-- your code below this line --v--
 
-function fetchDataAndRender() {
-  fetch(); // ?
+async function fetchDataAndRender() {
+  const response = await fetch("https://swapi.py4e.com/api/people");
+  const data = await response.json();
+  console.log(data);
+
+  for (const element in data.results) {
+    const firstCard = Card(data.results[element]);
+    console.log(firstCard);
+    renderElement(firstCard);
+  }
+
+  return data;
 }
+
+fetchDataAndRender();
+
+// Create dom element for a card and append it to the root
