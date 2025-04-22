@@ -1,3 +1,11 @@
 export default function App() {
-  return <h1>Replace me with your component!</h1>;
+  return <Greeting name="Daniel" />;
+}
+
+function Greeting({ name }) {
+  if (name == "Sven") {
+    return <p>Hello, Coach!</p>;
+  } else {
+    return <p>Hello, {name}!</p>;
+  }
 }
