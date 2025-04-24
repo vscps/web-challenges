@@ -36,8 +36,6 @@ const entries = [
 ];
 
 export default function EntriesSection() {
-  function isLastEntry(entries) {}
-
   return (
     <section className="entries-section">
       <Tabs>
