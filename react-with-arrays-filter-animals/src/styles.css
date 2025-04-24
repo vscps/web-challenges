@@ -35,3 +35,7 @@ li {
   border: 2px solid lightblue;
   padding: 1rem;
 }
+
+.selected {
+  background-color: lightblue;
+}

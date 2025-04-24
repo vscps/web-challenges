@@ -1,5 +1,7 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { useState } from "react";
 import "./styles.css";
+import Button from "./Button";
 
 const animals = [
   { id: "1", name: "Dog", habitat: "Domestic Animal", emoji: "🐕" },
@@ -30,5 +32,29 @@ const animals = [
 const habitats = ["Mountains", "Ocean", "Forest", "Domestic Animal"];
 
 export default function App() {
-  return <h1>Animal Filter</h1>;
+  const [animalHabitat, setHabitat] = useState("");
+  const filteredAnimals = animals.filter(
+    (animal) => animal.habitat == animalHabitat
+  );
+  return (
+    <Fragment>
+      <h1>Animal Filter</h1>
+      {habitats.map((habitat) => (
+        <Button
+          isActive={habitat === animalHabitat ? true : false}
+          name={habitat}
+          key={habitat}
+          handleEvent={() => setHabitat(habitat)}
+        />
+      ))}
+      {console.log(animalHabitat, filteredAnimals)}
+      <ul>
+        {filteredAnimals.map((animal) => (
+          <li key={animal.id}>
+            {animal.name} {animal.emoji}
+          </li>
+        ))}
+      </ul>
+    </Fragment>
+  );
 }
