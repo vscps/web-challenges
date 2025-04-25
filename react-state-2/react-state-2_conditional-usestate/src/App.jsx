@@ -4,6 +4,22 @@ import { useState } from "react";
 export default function App() {
   const [showMessage, setShowMessage] = useState(false);
 
+  const [message, setMessage] = useState("Secret message incoming...");
+  function handleShowMessage() {
+    setShowMessage(!showMessage);
+    console.log(showMessage);
+    console.log(message);
+  }
+
+  function handleSetMessage() {
+    if (!showMessage) {
+      setMessage(message);
+      return;
+    } else {
+      setMessage("The secret of Monkey Island is ... wait, no spoilers!");
+    }
+  }
+
   if (!showMessage) {
     return (
       <div className="container">
@@ -16,7 +32,7 @@ export default function App() {
         <button
           type="button"
           className="button"
-          onClick={() => setShowMessage(true)}
+          onClick={() => handleShowMessage()}
         >
           Show Message
         </button>
@@ -24,23 +40,19 @@ export default function App() {
     );
   }
 
-  const [message, setMessage] = useState("Secret message incoming...");
-
   return (
     <div className="container">
       <button
         type="button"
         className="button"
-        onClick={() => setShowMessage(false)}
+        onClick={() => handleShowMessage()}
       >
         Hide Message
       </button>
       <button
         type="button"
         className="button"
-        onClick={() =>
-          setMessage("The secret of Monkey Island is ... wait, no spoilers!")
-        }
+        onClick={() => handleSetMessage()}
       >
         Now really show the message!
       </button>
