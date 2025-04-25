@@ -38,6 +38,19 @@ const initialEntries = [
 
 function App() {
   const [entries, setEntries] = useState(initialEntries);
+  const [filter, setFilter] = useState("all");
+  const favoriteEntries = [
+    ...entries.filter((entry) => entry.isFavorite == true),
+  ];
+  console.log(favoriteEntries);
+
+  function handleShowFavoriteEntries() {
+    setFilter("favorites");
+  }
+
+  function handleShowAllEntries() {
+    setFilter("all");
+  }
 
   function handleAddEntry(newEntry) {
     const date = new Date().toLocaleDateString("en-us", {
@@ -60,8 +73,13 @@ function App() {
       <main className="app__main">
         <EntryForm onAddEntry={handleAddEntry} />
         <EntriesSection
-          entries={entries}
+          onShowAllEntries={handleShowAllEntries}
+          onShowFavoriteEntries={handleShowFavoriteEntries}
+          entries={filter == "all" ? entries : favoriteEntries}
           onToggleFavorite={handleToggleFavorite}
+          filter={filter}
+          allEntriesCount={entries.length}
+          favoriteEntriesCount={favoriteEntries.length}
         />
       </main>
       <Footer />
