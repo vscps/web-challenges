@@ -2,8 +2,10 @@ import useSWR from "swr";
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
 export default function HomePage() {
-  const { data } = useSWR("/api/random-character", fetcher);
-  console.log(data);
+  const { data, error, isLoading } = useSWR("/api/random-character", fetcher);
+  if (isLoading) return <div>Lade Daten...</div>;
+  if (error) return <div>Fehler beim Laden der Daten.</div>;
+  if (!data) return <div>Keine Daten gefunden.</div>;
   return (
     <div>
       <ul>
